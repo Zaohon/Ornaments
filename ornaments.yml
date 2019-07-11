@@ -1,0 +1,513 @@
+Devil-Brooch:
+  Type: NECKLACE
+  0:
+    DisplayName: "§c恶魔胸针"
+    Material: POPPY
+    Lores: 
+      - " 恶魔胸口的胸针"
+      - "似乎还残留点恶魔的力量"
+    Health: 5
+    Armor: 5
+    Luck: 5
+    Agile: 5
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-恶魔胸针  §e(+1)"
+    Material: POPPY
+    Lores:
+      - "恶魔胸口的胸针"
+      - "似乎还残留点恶魔的力量"
+    Health: 7
+    Armor: 7
+    Luck: 7
+    Agile: 7
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-恶魔胸针  §e(+2)" 
+    Material: POPPY
+    Lores:
+      - "恶魔胸口的胸针"
+      - "似乎还残留点恶魔的力量"
+    Health: 10
+    Armor: 10
+    Luck: 10
+    Agile: 10
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-恶魔胸针  §e(+3)"
+    Material: POPPY
+    Lores:
+      - "恶魔胸口的胸针"
+      - "似乎还残留点恶魔的力量"
+    Health: 15
+    Armor: 15
+    Luck: 12
+    Agile: 12
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-恶魔胸针  §e(+4)"
+    Material: POPPY
+    Lores:
+      - "恶魔胸口的胸针"
+      - "似乎还残留点恶魔的力量"
+    Health: 20
+    Armor: 20
+    Luck: 15
+    Agile: 15
+    Enchantment: true
+Lucky-Ring:
+  Type: RING
+  0:
+    DisplayName: "§c幸运戒指"
+    Material: SUNFLOWER
+    Lores: 
+      - "能让你运气UPUP的戒指"
+      - "如果脸太黑的话那戒指我也没办法了"
+    Health: 5
+    Armor: 5
+    Luck: 5
+    Agile: 5
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-幸运戒指  §e(+1)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能让你运气UPUP的戒指"
+      - "如果脸太黑的话那戒指我也没办法了"
+    Health: 7
+    Armor: 7
+    Luck: 7
+    Agile: 7
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-幸运戒指  §e(+2)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能让你运气UPUP的戒指"
+      - "如果脸太黑的话那戒指我也没办法了"
+    Health: 10
+    Armor: 10
+    Luck: 12
+    Agile: 12
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-幸运戒指  §e(+3)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能让你运气UPUP的戒指"
+      - "如果脸太黑的话那戒指我也没办法了"
+    Health: 10
+    Armor: 10
+    Luck: 15
+    Agile: 15
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-幸运戒指  §e(+4)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能让你运气UPUP的戒指"
+      - "如果脸太黑的话那戒指我也没办法了"
+    Health: 10
+    Armor: 10
+    Luck: 20
+    Agile: 20
+    Enchantment: true
+Guard-Bracelet:
+  Type: BRACELET
+  0:
+    DisplayName: "§c守护手镯"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "只是一个手镯却能提高你的防御"
+      - "手镯；我也不知道为啥"
+    Health: 5
+    Armor: 8
+    Luck: 5
+    Agile: 5
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-守护手镯  §e(+1)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "只是一个手镯却能提高你的防御"
+      - "手镯；我也不知道为啥"
+    Health: 7
+    Armor: 10
+    Luck: 7
+    Agile: 7
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-守护手镯  §e(+2)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "只是一个手镯却能提高你的防御"
+      - "手镯；我也不知道为啥"
+    Health: 6
+    Armor: 13
+    Luck: 8
+    Agile: 8
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-守护手镯  §e(+3)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "只是一个手镯却能提高你的防御"
+      - "手镯；我也不知道为啥"
+    Health: 10
+    Armor: 17
+    Luck: 10
+    Agile: 10
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-守护手镯  §e(+4)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "只是一个手镯却能提高你的防御"
+      - "手镯；我也不知道为啥"
+    Health: 10
+    Armor: 20
+    Luck: 10
+    Agile: 10
+    Enchantment: true
+Blessing-of-Elves:
+  Type: NECKLACE
+  0:
+    DisplayName: "§c精灵的祝福"
+    Material: POPPY
+    Lores: 
+      - "来自精灵的礼物"
+      - ""
+    Health: 5
+    Armor: 0
+    Luck: 7
+    Agile: 7
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-精灵的祝福  §e(+1)"
+    Material: POPPY
+    Lores: 
+      - "来自精灵的礼物"
+      - ""
+    Health: 5
+    Armor: 0
+    Luck: 10
+    Agile: 10
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-精灵的祝福  §e(+2)"
+    Material: POPPY
+    Lores: 
+      - "来自精灵的礼物"
+      - ""
+    Health: 5
+    Armor: 0
+    Luck: 15
+    Agile: 15
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-精灵的祝福  §e(+3)"
+    Material: POPPY
+    Lores: 
+      - "来自精灵的礼物"
+      - ""
+    Health: 5
+    Armor: 0
+    Luck: 22
+    Agile: 22
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-精灵的祝福  §e(+4)"
+    Material: POPPY
+    Lores: 
+      - "来自精灵的礼物"
+      - ""
+    Health: 5
+    Armor: 0
+    Luck: 30
+    Agile: 30
+    Enchantment: true
+Agile-Feather:
+  Type: BRACELET
+  0:
+    DisplayName: "§c敏捷之羽"
+    Material: SUNFLOWER
+    Lores: 
+      - "能够提高你速度的羽毛"
+      - "闪避MAX(不可能的)"
+    Health: 3
+    Armor: 0
+    Luck: 0
+    Agile: 7
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-敏捷之羽  §e(+1)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能够提高你速度的羽毛"
+      - "闪避MAX(不可能的)"
+    Health: 5
+    Armor: 0
+    Luck: 0
+    Agile: 10
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-敏捷之羽  §e(+2)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能够提高你速度的羽毛"
+      - "闪避MAX(不可能的)"
+    Health: 7
+    Armor: 0
+    Luck: 0
+    Agile: 15
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-敏捷之羽  §e(+3)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能够提高你速度的羽毛"
+      - "闪避MAX(不可能的)"
+    Health: 10
+    Armor: 0
+    Luck: 0
+    Agile: 22
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-敏捷之羽  §e(+4)"
+    Material: SUNFLOWER
+    Lores: 
+      - "能够提高你速度的羽毛"
+      - "闪避MAX(不可能的)"
+    Health: 15
+    Armor: 0
+    Luck: 0
+    Agile: 30
+    Enchantment: true
+Silver-Ring:
+  Type: RING
+  0:
+    DisplayName: "§c银质戒指"
+    Material: SUNFLOWER
+    Lores: 
+      - "别看了，就只是个银做的戒指而已"
+      - "比较轻，能加点防御"
+    Health: 3
+    Armor: 3
+    Luck: 5
+    Agile: 5
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-银质戒指  §e(+1)"
+    Material: SUNFLOWER
+    Lores: 
+      - "别看了，就只是个银做的戒指而已"
+      - "比较轻，能加点防御"
+    Health: 5
+    Armor: 5
+    Luck: 7
+    Agile: 10
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-银质戒指  §e(+2)"
+    Material: SUNFLOWER
+    Lores: 
+      - "别看了，就只是个银做的戒指而已"
+      - "比较轻，能加点防御"
+    Health: 7
+    Armor: 7
+    Luck: 7
+    Agile: 10
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-银质戒指  §e(+3)"
+    Material: SUNFLOWER
+    Lores: 
+      - "别看了，就只是个银做的戒指而已"
+      - "比较轻，能加点防御"
+    Health: 10
+    Armor: 10
+    Luck: 8
+    Agile: 15
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-银质戒指  §e(+4)"
+    Material: SUNFLOWER
+    Lores: 
+      - "别看了，就只是个银做的戒指而已"
+      - "比较轻，能加点防御"
+    Health: 15
+    Armor: 10
+    Luck: 10
+    Agile: 15
+    Enchantment: true
+Light-Ring:
+  Type: RING
+  0:
+    DisplayName: "§c圣光戒指"
+    Material: SUNFLOWER
+    Lores: 
+      - "圣光！保护我吧！！"
+      - "（去圣光MOD已加载）"
+    Health: 3
+    Armor: 5
+    Luck: 5
+    Agile: 3
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-圣光戒指  §e(+1)"
+    Material: SUNFLOWER
+    Lores: 
+      - "圣光！保护我吧！！"
+      - "（去圣光MOD已加载）"
+    Health: 5
+    Armor: 8
+    Luck: 8
+    Agile: 5
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-圣光戒指  §e(+2)"
+    Material: SUNFLOWER
+    Lores: 
+      - "圣光！保护我吧！！"
+      - "（去圣光MOD已加载）"
+    Health: 7
+    Armor: 10
+    Luck: 10
+    Agile: 7
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-圣光戒指  §e(+3)"
+    Material: SUNFLOWER
+    Lores: 
+      - "圣光！保护我吧！！"
+      - "（去圣光MOD已加载）"
+    Health: 10
+    Armor: 15
+    Luck: 15
+    Agile: 10
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-圣光戒指  §e(+4)"
+    Material: SUNFLOWER
+    Lores: 
+      - "圣光！保护我吧！！"
+      - "（去圣光MOD已加载）"
+    Health: 10
+    Armor: 20
+    Luck: 20
+    Agile: 10
+    Enchantment: true
+Combat-Wristband:
+  Type: BRACELET
+  0:
+    DisplayName: "§c战斗护腕"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "战斗时用的护腕"
+      - "比较重但是能提高你的暴击率"
+    Health: 5
+    Armor: 3
+    Luck: 5
+    Agile: 1
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-战斗护腕  §e(+1)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "战斗时用的护腕"
+      - "比较重但是能提高你的暴击率"
+    Health: 8
+    Armor: 5
+    Luck: 8
+    Agile: 3
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-战斗护腕  §e(+2)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "战斗时用的护腕"
+      - "比较重但是能提高你的暴击率"
+    Health: 10
+    Armor: 8
+    Luck: 10
+    Agile: 5
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-战斗护腕  §e(+3)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "战斗时用的护腕"
+      - "比较重但是能提高你的暴击率"
+    Health: 15
+    Armor: 10
+    Luck: 15
+    Agile: 7
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-战斗护腕  §e(+4)"
+    Material: TRIPWIRE_HOOK
+    Lores: 
+      - "战斗时用的护腕"
+      - "比较重但是能提高你的暴击率"
+    Health: 20
+    Armor: 10
+    Luck: 20
+    Agile: 10
+    Enchantment: true
+Dragon-NECKLACE:
+  Type: NECKLACE
+  0:
+    DisplayName: "§c巨龙项链"
+    Material: POPPY
+    Lores: 
+      - "从巨龙身上取下来的鳞片做的项链"
+      - "没有买卖就没有伤害"
+    Health: 5
+    Armor: 3
+    Luck: 5
+    Agile: 3
+    Enchantment: false
+  1:
+    DisplayName: "§c强化-巨龙项链  §e(+1)"
+    Material: POPPY
+    Lores:
+      - "从巨龙身上取下来的鳞片做的项链"
+      - "没有买卖就没有伤害"
+    Health: 7
+    Armor: 5
+    Luck: 7
+    Agile: 5
+    Enchantment: false
+  2:
+    DisplayName: "§c优良-巨龙项链  §e(+2)"
+    Material: POPPY
+    Lores:
+      - "从巨龙身上取下来的鳞片做的项链"
+      - "没有买卖就没有伤害"
+    Health: 10
+    Armor: 7
+    Luck: 10
+    Agile: 7
+    Enchantment: false
+  3:
+    DisplayName: "§c精美-巨龙项链  §e(+3)"
+    Material: POPPY
+    Lores:
+      - "从巨龙身上取下来的鳞片做的项链"
+      - "没有买卖就没有伤害"
+    Health: 15
+    Armor: 10
+    Luck: 15
+    Agile: 10
+    Enchantment: false
+  4:
+    DisplayName: "§c极品-巨龙项链  §e(+4)"
+    Material: POPPY
+    Lores:
+      - "从巨龙身上取下来的鳞片做的项链"
+      - "没有买卖就没有伤害"
+    Health: 20
+    Armor: 10
+    Luck: 15
+    Agile: 10
+    Enchantment: true
