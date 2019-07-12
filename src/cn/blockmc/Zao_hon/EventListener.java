@@ -25,7 +25,7 @@ public class EventListener implements Listener {
 		if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			Player p = e.getPlayer();
 			ItemStack item = e.getItem();
-			if (item != null && item.isSimilar(plugin.getOrnamentItem())) {
+			if (item != null && item.isSimilar(plugin.getOrnamentManager().getOrnamentItem())) {
 				e.setCancelled(true);
 				OrnamentGUI gui = OrnamentGUI.getPlayerGUI(plugin.getOrnamentManager(), p);
 				gui.open();
@@ -72,7 +72,7 @@ public class EventListener implements Listener {
 	@EventHandler
 	public void onPlayerDrop(PlayerDropItemEvent e){
 		ItemStack item = (ItemStack) e.getItemDrop();
-		if(item.isSimilar(plugin.getOrnamentItem())){
+		if(item.isSimilar(plugin.getOrnamentManager().getOrnamentItem())){
 			e.setCancelled(true);
 		}
 	}

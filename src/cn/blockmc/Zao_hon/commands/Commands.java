@@ -36,7 +36,7 @@ public class Commands implements CommandExecutor {
 			}
 			if (args[0].equals("get")) {
 				Player player = (Player) sender;
-				player.getInventory().addItem(plugin.getOrnamentItem());
+				player.getInventory().addItem(plugin.getOrnamentManager().getOrnamentItem());
 				plugin.getOrnamentManager().getOrnaments().values().forEach(o -> {
 					PlayerOrnament po = PlayerOrnament.asPlayerOrnament(o, 4);
 					player.getInventory().addItem(PlayerOrnament.asItemStack(po));

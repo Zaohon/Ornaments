@@ -1,6 +1,7 @@
 package cn.blockmc.Zao_hon.inventory;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +11,10 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import cn.blockmc.Zao_hon.Ornaments;
 
@@ -17,6 +22,7 @@ public class OrnamentManager {
 	private Ornaments plugin;
 	private HashMap<String, Ornament> ornaments = new HashMap<String, Ornament>();
 	private HashMap<UUID, OrnamentStorager> playerStorager = new HashMap<UUID, OrnamentStorager>();
+	private ItemStack ornamentitem = null;
 
 	public OrnamentManager(Ornaments plugin) {
 		this.plugin = plugin;
@@ -65,6 +71,23 @@ public class OrnamentManager {
 			ornaments.put(name, ornament);
 		});
 	}
+	public void loadOrnamentItem() {
+		String displayname = plugin.getConfig().getString("Open-Item.DisplayName","°Ïe Œ∆∑");
+		List<String> lores = plugin.getConfig().getStringList("Open-Item.Lores");
+		Material m = Material.valueOf(plugin.getConfig().getString("Open-Item.Material","SUNFLOWER"));
+		boolean b = plugin.getConfig().getBoolean("Open-Item.Enchantment",false);
+		ItemStack item = new ItemStack(m);
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName(displayname);
+		meta.setLore(lores);
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		item.setItemMeta(meta);
+		if (b) {
+			item.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
+		}
+		ornamentitem = item;
+
+	}
 
 	public Ornament getOrnament(String str) {
 		if (ornaments.containsKey(str)) {
@@ -93,5 +116,9 @@ public class OrnamentManager {
 	public Ornaments getPlugin(){
 		return plugin;
 	}
+	public ItemStack getOrnamentItem() {
+		return ornamentitem.clone();
+	}
+
 
 }
