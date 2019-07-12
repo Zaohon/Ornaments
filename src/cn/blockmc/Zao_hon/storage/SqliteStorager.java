@@ -51,6 +51,7 @@ public class SqliteStorager extends DataStorager {
 			stat.execute(
 					"CREATE TABLE IF NOT EXISTS playerornaments(NAME TEXT , UUID TEXT , NECKLACE TEXT,BRACELET TEXT,RING TEXT)");
 			stat.close();
+			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
 			plugin.PR("创建初始表失败");
@@ -105,18 +106,37 @@ public class SqliteStorager extends DataStorager {
 		return storager;
 	}
 
+//	@Override
+//	public void setPlayerStorager(UUID uuid,  OrnamentStorager str) {
+//		OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+//		Connection connection = setupConnection();
+//		try {
+//			setupPreparedStatement(connection, PreparedStatementType.UPDATE_STORAGER);
+//			mUpdateStorager.setString(1, str.getPlayerOrnament(OrnamentType.NECKLACE).toString());
+//			mUpdateStorager.setString(2,  str.getPlayerOrnament(OrnamentType.BRACELET).toString());
+//			mUpdateStorager.setString(3, str.getPlayerOrnament(OrnamentType.RING).toString());
+//			mUpdateStorager.setString(4, uuid.toString());
+//			mUpdateStorager.execute();
+//			mUpdateStorager.close();
+//			connection.commit();
+//			connection.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	@Override
 	public void setPlayerStorager(UUID uuid,  OrnamentStorager str) {
 		OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
 		Connection connection = setupConnection();
 		try {
-			setupPreparedStatement(connection, PreparedStatementType.UPDATE_STORAGER);
-			mUpdateStorager.setString(1, str.getPlayerOrnament(OrnamentType.NECKLACE).toString());
-			mUpdateStorager.setString(2,  str.getPlayerOrnament(OrnamentType.BRACELET).toString());
-			mUpdateStorager.setString(3, str.getPlayerOrnament(OrnamentType.RING).toString());
-			mUpdateStorager.setString(4, uuid.toString());
-			mUpdateStorager.execute();
-			mUpdateStorager.close();
+			setupPreparedStatement(connection, PreparedStatementType.REPLACE_STORAGER);
+			mReplaceStorager.setString(1, player.getName());
+			mReplaceStorager.setString(2, uuid.toString());
+			mReplaceStorager.setString(3, str.getPlayerOrnamentStr(OrnamentType.NECKLACE));
+			mReplaceStorager.setString(4,  str.getPlayerOrnamentStr(OrnamentType.BRACELET));
+			mReplaceStorager.setString(5, str.getPlayerOrnamentStr(OrnamentType.RING));
+			mReplaceStorager.execute();
+			mReplaceStorager.close();
 			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
@@ -137,6 +157,9 @@ public class SqliteStorager extends DataStorager {
 			mUpdateStorager = conn.prepareStatement(
 					"UPDATE playerornaments SET NECKLACE = ? AND BRACELET = ? AND RING = ?  WHERE UUID = ?");
 			break;
+		case REPLACE_STORAGER:
+			mReplaceStorager = conn.prepareStatement(
+					"Replace INTO playerornaments VALUES(?,?,?,?,?)");
 		default:
 			break;
 

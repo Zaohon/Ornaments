@@ -33,6 +33,7 @@ public final class PlayerOrnament {
 	public String toString(){
 		return ornament.getName()+"."+level;
 	}
+	
 
 	public static PlayerOrnament asPlayerOrnament(Ornament ornament, int level) {
 		return new PlayerOrnament(ornament, level);

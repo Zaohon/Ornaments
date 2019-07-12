@@ -45,7 +45,7 @@ public class OrnamentGUI {
 		SkullMeta meta = (SkullMeta) head.getItemMeta();
 		meta.setOwningPlayer(p);
 		head.setItemMeta(meta);
-		updateHead();
+
 
 //		String str = plugin.getOrnamentStr(p.getUniqueId());
 //		if (str != null && !str.equals("")) {
@@ -63,15 +63,16 @@ public class OrnamentGUI {
 //			}
 //		}
 		storager = manager.getPlayerStorager(p.getUniqueId());
-		for(OrnamentType type:OrnamentType.values()){
-			ItemStack item =PlayerOrnament.asItemStack( storager.getPlayerOrnament(type));
-			inventory.setItem(type.getSlot(), item);
-		}
+		updateHead();
 		
 		listener = new OrnamentGUIListener(this);
 	}
 
 	public void updateHead() {
+		for (OrnamentType type : OrnamentType.values()) {
+			ItemStack item = inventory.getItem(type.getSlot());
+			storager.setOrnament(type, PlayerOrnament.asPlayerOrnament(manager, item));
+		}
 		int[] i = Caculator.caculateAttributeNumbers(storager);
 		ItemMeta meta = head.getItemMeta();
 		meta.setDisplayName("§d总属性加成:");
@@ -95,11 +96,6 @@ public class OrnamentGUI {
 	public void close() {
 		if (open) {
 			open = false;
-			for (OrnamentType type : OrnamentType.values()) {
-				ItemStack item = inventory.getItem(type.getSlot());
-				storager.setOrnament(type, PlayerOrnament.asPlayerOrnament(manager, item));
-			}
-			
 			manager.setPlayerStorager(player.getUniqueId(), storager);
 			manager.getPlugin().updatePlayerAttribute(player);
 			HandlerList.unregisterAll(listener);
@@ -129,7 +125,13 @@ public class OrnamentGUI {
 	}
 
 	public static OrnamentGUI getPlayerGUI(OrnamentManager manager,Player player) {
-		return playerguis.getOrDefault(player.getUniqueId(), new OrnamentGUI(manager,player));
+		if(playerguis.containsKey(player.getUniqueId())){
+			return playerguis.get(player.getUniqueId());
+		}else{
+			OrnamentGUI gui = new OrnamentGUI(manager,player);
+			playerguis.put(player.getUniqueId(), gui);
+			return gui;
+		}
 	}
 
 	public static HashMap<UUID, OrnamentGUI> playerguis = new HashMap<UUID, OrnamentGUI>();

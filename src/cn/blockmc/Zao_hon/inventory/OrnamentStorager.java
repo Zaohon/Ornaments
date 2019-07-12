@@ -41,5 +41,9 @@ public class OrnamentStorager {
 		String sRing =  ring==null?"null": ring.toString();
 		return "NECKLACE:"+sNecklace+"\nBRACELET:"+sBracelet+"\nRING:"+sRing;
 	}
+	public String getPlayerOrnamentStr(@Nonnull OrnamentType type){
+		PlayerOrnament po = getPlayerOrnament(type);
+		return po==null?null:po.toString();
+	}
 
 }
