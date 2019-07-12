@@ -17,6 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import cn.blockmc.Zao_hon.commands.Commands;
 import cn.blockmc.Zao_hon.inventory.OrnamentManager;
 import cn.blockmc.Zao_hon.storage.DataStorager;
+import cn.blockmc.Zao_hon.storage.SqliteStorager;
 
 public class Ornaments extends JavaPlugin {
 	private ItemStack ornamentitem = null;
@@ -31,6 +32,7 @@ public class Ornaments extends JavaPlugin {
 		this.saveDefaultConfig();
 
 		ornamentManager = new OrnamentManager(this);
+		dataStorager = new SqliteStorager(this);
 
 //		this.loadPlayerOrnaments();
 		this.loadOrnamentItem();

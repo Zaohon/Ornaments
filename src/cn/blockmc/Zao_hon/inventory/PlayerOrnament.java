@@ -29,6 +29,10 @@ public final class PlayerOrnament {
 	public OrnamentAttribute getAttribute() {
 		return attribute;
 	}
+	@Override
+	public String toString(){
+		return ornament.getName()+"."+level;
+	}
 
 	public static PlayerOrnament asPlayerOrnament(Ornament ornament, int level) {
 		return new PlayerOrnament(ornament, level);
@@ -47,14 +51,22 @@ public final class PlayerOrnament {
 		}
 		return null;
 	}
+	
 	public static PlayerOrnament asPlayerOrnament(OrnamentManager manager, @Nonnull ItemStack item) {
+		if(item==null){
+			return null;
+		}
 		return asPlayerOrnament(manager,item.getItemMeta().getLocalizedName());
 	}
 
 	public static ItemStack asItemStack(PlayerOrnament pornament) {
+		if(pornament==null){
+			return null;
+		}
 		ItemStack item = new ItemStack(pornament.getAttribute().getMaterial());
 		ItemMeta meta = item.getItemMeta();
 		meta.setDisplayName(pornament.getAttribute().getDisplayName());
+		meta.setLocalizedName(pornament.toString());
 		meta.setLore(pornament.getAttribute().getLores());
 		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		item.setItemMeta(meta);
@@ -63,4 +75,5 @@ public final class PlayerOrnament {
 		}
 		return item;
 	}
+
 }

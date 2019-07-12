@@ -16,6 +16,7 @@ import cn.blockmc.Zao_hon.Ornaments;
 public class OrnamentManager {
 	private Ornaments plugin;
 	private HashMap<String, Ornament> ornaments = new HashMap<String, Ornament>();
+	private HashMap<UUID, OrnamentStorager> playerStorager = new HashMap<UUID, OrnamentStorager>();
 
 	public OrnamentManager(Ornaments plugin) {
 		this.plugin = plugin;
@@ -77,24 +78,16 @@ public class OrnamentManager {
 	}
 
 	public OrnamentStorager getPlayerStorager(UUID uuid) {
-		String[] str = plugin.getDataStorager().getPlayerStorager(uuid);
-		PlayerOrnament necklace = PlayerOrnament.asPlayerOrnament(this, str[0]);
-		PlayerOrnament bracelet = PlayerOrnament.asPlayerOrnament(this, str[1]);
-		PlayerOrnament ring = PlayerOrnament.asPlayerOrnament(this, str[2]);
-		OrnamentStorager storage = new OrnamentStorager();
-		storage.setOrnament(OrnamentType.NECKLACE, necklace);
-		storage.setOrnament(OrnamentType.BRACELET, bracelet);
-		storage.setOrnament(OrnamentType.RING, ring);
-		return storage;
+		if(playerStorager.containsKey(uuid)){
+			return playerStorager.get(uuid);
+		}
+		OrnamentStorager storager = plugin.getDataStorager().getPlayerStorager(uuid);
+		playerStorager.put(uuid, storager);
+		return storager;
 	}
 	public void setPlayerStorager(UUID uuid,OrnamentStorager storager) {
-		String[] str = new String[3];
-		for(int i=0;i<OrnamentType.values().length;i++) {
-			OrnamentType type = OrnamentType.values()[i];
-			PlayerOrnament o = storager.getPlayerOrnament(type);
-			String s = o==null?null:o.getOrnament().getName()+"."+o.getLevel();
-			str[i] = s;
-		}
+		playerStorager.put(uuid, storager);
+		plugin.getDataStorager().setPlayerStorager(uuid, storager);
 	}
 	
 	public Ornaments getPlugin(){

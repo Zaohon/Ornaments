@@ -2,7 +2,6 @@ package cn.blockmc.Zao_hon.storage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +12,9 @@ import javax.annotation.Nonnull;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import cn.blockmc.Zao_hon.Ornaments;
+import cn.blockmc.Zao_hon.inventory.OrnamentStorager;
+import cn.blockmc.Zao_hon.inventory.OrnamentType;
+import cn.blockmc.Zao_hon.inventory.PlayerOrnament;
 
 public class SqliteStorager extends DataStorager {
 	private Ornaments plugin;
@@ -26,13 +28,15 @@ public class SqliteStorager extends DataStorager {
 			plugin.PR("加载JDBC数据库失败");
 			plugin.onDisable();
 		}
-		path = "jdbc:sqlite:" + plugin.getDataFolder() + "/" + "portals.db";
+		path = "jdbc:sqlite:" + plugin.getDataFolder() + "/" + "datas.db";
 		this.setupTable();
 	}
 
 	public Connection setupConnection() {
 		try {
-			return DriverManager.getConnection(path);
+			Connection conn = DriverManager.getConnection(path);
+			conn.setAutoCommit(false);
+			return conn;
 		} catch (SQLException e) {
 			plugin.PR("连接数据库失败");
 			plugin.onDisable();
@@ -59,15 +63,16 @@ public class SqliteStorager extends DataStorager {
 		Connection connection = setupConnection();
 		String name = player.getName();
 		String uuid = player.getUniqueId().toString();
-		PreparedStatement ps = setupPreparedStatement(connection, PreparedStatementType.INSERT_STORAGER);
 		try {
-			ps.setString(1, name);
-			ps.setString(2, uuid);
-			ps.setString(3, null);
-			ps.setString(4, null);
-			ps.setString(5, null);
-			ps.execute();
-			ps.close();
+			setupPreparedStatement(connection, PreparedStatementType.INSERT_STORAGER);
+			mInsertStorager.setString(1, name);
+			mInsertStorager.setString(2, uuid);
+			mInsertStorager.setString(3, null);
+			mInsertStorager.setString(4, null);
+			mInsertStorager.setString(5, null);
+			mInsertStorager.execute();
+			mInsertStorager.close();
+			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -76,65 +81,66 @@ public class SqliteStorager extends DataStorager {
 	}
 
 	@Override
-	public String[] getPlayerStorager(UUID uuid) {
-		OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
-		String[] str = new String[3];
+	public OrnamentStorager getPlayerStorager(UUID uuid) {
+		OrnamentStorager storager = new OrnamentStorager();
 		Connection connection = setupConnection();
-		PreparedStatement ps = setupPreparedStatement(connection, PreparedStatementType.SELECT_STORAGER);
 		try {
-			ps.setString(1, uuid.toString());
-			ResultSet rs = ps.executeQuery();
+			setupPreparedStatement(connection, PreparedStatementType.SELECT_STORAGER);
+			mSelectStorager.setString(1, uuid.toString());
+			ResultSet rs = mSelectStorager.executeQuery();
 			if (rs.next()) {
-				str[0] = rs.getString(1);
-				str[1] = rs.getString(2);
-				str[2] = rs.getString(3);
-			} else {
-				addPlayerStorager(player);
+				storager.setOrnament(OrnamentType.NECKLACE,
+						PlayerOrnament.asPlayerOrnament(plugin.getOrnamentManager(), rs.getString(1)));
+				storager.setOrnament(OrnamentType.BRACELET,
+						PlayerOrnament.asPlayerOrnament(plugin.getOrnamentManager(), rs.getString(2)));
+				storager.setOrnament(OrnamentType.RING,
+						PlayerOrnament.asPlayerOrnament(plugin.getOrnamentManager(), rs.getString(3)));
 			}
+			mSelectStorager.close();
+			connection.commit();
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return str;
+		return storager;
 	}
 
 	@Override
-	public void setPlayerStorager(UUID uuid, String[] str) {
+	public void setPlayerStorager(UUID uuid,  OrnamentStorager str) {
+		OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
 		Connection connection = setupConnection();
-		PreparedStatement ps = setupPreparedStatement(connection, PreparedStatementType.SELECT_STORAGER);
 		try {
-			ps.setString(1, uuid.toString());
-			ps.setString(2, str[0]);
-			ps.setString(3, str[1]);
-			ps.setString(4, str[2]);
-			ps.execute();
-			ps.close();
+			setupPreparedStatement(connection, PreparedStatementType.UPDATE_STORAGER);
+			mUpdateStorager.setString(1, str.getPlayerOrnament(OrnamentType.NECKLACE).toString());
+			mUpdateStorager.setString(2,  str.getPlayerOrnament(OrnamentType.BRACELET).toString());
+			mUpdateStorager.setString(3, str.getPlayerOrnament(OrnamentType.RING).toString());
+			mUpdateStorager.setString(4, uuid.toString());
+			mUpdateStorager.execute();
+			mUpdateStorager.close();
+			connection.commit();
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public PreparedStatement setupPreparedStatement(Connection conn, @Nonnull PreparedStatementType type) {
-		String str = "";
+	public void setupPreparedStatement(Connection conn, @Nonnull PreparedStatementType type) throws SQLException {
 		switch (type) {
 		case INSERT_STORAGER:
-			str = "INSERT INTO playerornaments VALUE(?,?,?,?,?)";
+			mInsertStorager = conn.prepareStatement("INSERT INTO playerornaments VALUES(?,?,?,?,?)");
 			break;
 		case SELECT_STORAGER:
-			str = "SELECT NECKLACE,BRACELET,RING FROM playerornaments WHERE UUID = ?";
+			mSelectStorager = conn
+					.prepareStatement("SELECT NECKLACE,BRACELET,RING FROM playerornaments WHERE UUID = ?");
 			break;
 		case UPDATE_STORAGER:
-			str = "UPDATE playerornaments WHERE UUID = ? SET NECKLACE = ? AND BRACELET = ? AND RING = ?";
+			mUpdateStorager = conn.prepareStatement(
+					"UPDATE playerornaments SET NECKLACE = ? AND BRACELET = ? AND RING = ?  WHERE UUID = ?");
 			break;
 		default:
 			break;
+
 		}
-		try {
-			return conn.prepareStatement(str);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 }

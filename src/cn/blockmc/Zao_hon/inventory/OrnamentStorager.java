@@ -34,5 +34,12 @@ public class OrnamentStorager {
 			return null;
 		}
 	}
+	@Override
+	public String toString(){
+		String sNecklace = necklace==null?"null":necklace.toString();
+		String sBracelet = bracelet==null?"null":bracelet.toString();
+		String sRing =  ring==null?"null": ring.toString();
+		return "NECKLACE:"+sNecklace+"\nBRACELET:"+sBracelet+"\nRING:"+sRing;
+	}
 
 }
