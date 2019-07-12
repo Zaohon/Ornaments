@@ -8,13 +8,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import cn.blockmc.Zao_hon.Ornaments;
-
 public class OrnamentGUIListener implements Listener {
 //	private Ornaments plugin;
 	private OrnamentGUI gui;
-	//
-	private int i = 0;
 
 	public OrnamentGUIListener(OrnamentGUI gui) {
 //		this.plugin = Ornaments.getInstance();
