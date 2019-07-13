@@ -16,7 +16,7 @@ public class OrnamentStorager {
 			this.bracelet = ornament;
 			return;
 		case RING:
-			this.bracelet = ornament;
+			this.ring= ornament;
 			return;
 		}
 

@@ -1,4 +1,4 @@
-Discardable: false
+Auto-Give-Item: true
 
 Open-Item:
   DisplayName: "§e饰品"

@@ -28,6 +28,7 @@ public class OrnamentManager {
 		this.plugin = plugin;
 		saveDefaultOrnaments();
 		loadOrnaments();
+		loadOrnamentItem();
 	}
 
 	public void saveDefaultOrnaments() {

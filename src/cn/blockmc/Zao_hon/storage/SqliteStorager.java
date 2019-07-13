@@ -49,7 +49,7 @@ public class SqliteStorager extends DataStorager {
 		try {
 			Statement stat = connection.createStatement();
 			stat.execute(
-					"CREATE TABLE IF NOT EXISTS playerornaments(NAME TEXT , UUID TEXT , NECKLACE TEXT,BRACELET TEXT,RING TEXT)");
+					"CREATE TABLE IF NOT EXISTS playerornaments(NAME TEXT , UUID TEXT PRIMARY KEY NOT NULL, NECKLACE TEXT,BRACELET TEXT,RING TEXT)");
 			stat.close();
 			connection.commit();
 			connection.close();

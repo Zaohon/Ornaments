@@ -46,22 +46,6 @@ public class OrnamentGUI {
 		meta.setOwningPlayer(p);
 		head.setItemMeta(meta);
 
-
-//		String str = plugin.getOrnamentStr(p.getUniqueId());
-//		if (str != null && !str.equals("")) {
-//			for (String s : str.split(";")) {
-//				try {
-//					String[] sl = s.split("\\.");
-//					String name = sl[0];
-//					int l = Integer.valueOf(sl[1]);
-//					Ornament o = plugin.getOrnament(name);
-//					ItemStack item = plugin.getItemStack(o, l);
-//					inventory.setItem(o.getType().getSlot(), item);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
 		storager = manager.getPlayerStorager(p.getUniqueId());
 		updateHead();
 		
